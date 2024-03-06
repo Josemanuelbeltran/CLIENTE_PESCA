@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar Sesión</title>
+<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+
+<div class="container">
+
+    <form id="loginForm" class="login-form">
+        <div class="form-group">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="button" onclick="login()">Iniciar Sesión</button>
+    </form>
+</div>
+
+
+</body>
+</html>
+
+
+<script>
+function verificarAutenticacion() {
+  var token = localStorage.getItem('token'); // Obtener el token del localStorage
+  if (token) {
+    // Si hay un token, redirigir a la página de inicio
+    window.location.href = 'inicio.html';
+  } else {
+    // Si no hay un token, redirigir a la página de inicio de sesión
+    window.location.href = 'login.html';
+  }
+}
+function login() {
+  var username = document.getElementById('username').value;
+  var password = document.getElementById('password').value;
+
+  // Objeto con los datos del usuario
+  var userData = {
+    name: username,
+    password: password
+  };
+
+  // Petición POST a /login
+  fetch('http://localhost:3000/inventario/logear', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userData)
+  })
+  .then(response => {
+    if (response.ok ) {
+    return response.text(); 
+  } else {
+    throw new Error('Error al iniciar sesión'); // Manejar errores de respuesta
+  }
+})
+.then(token => {
+  localStorage.setItem('token', token);
+  verificarAutenticacion();
+})
+  .catch(error => {
+    console.error('Error al iniciar sesión:', error);
+    alert('Error al intentar iniciar sesión. Por favor, inténtelo de nuevo más tarde.');
+  });
+}
+
+
+
+</script>
+
+</body>
+</html>

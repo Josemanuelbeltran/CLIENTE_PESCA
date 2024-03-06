@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabla de Inventario</title>
+<link rel="stylesheet" href="categoria_surfcasting.css">
+</head>
+<body>
+  <div >
+    <nav class="navbar">
+      <ul>
+        <li><a href="inicio.html">Inicio</a></li>
+        <li class="dropdown">
+          <a href="#">Categorías</a>
+          <div class="dropdown-content">
+            <a href="categoria_surfcasting.html">Surfcasting</a>
+            <a href="categoria_ spinning.html"> Spinning</a>
+            <a href="category3.html">Rockfishing</a>
+          </div>
+        </li>
+        <li><a href="#">Otra Opción</a></li>
+        <li><a href="#">Cuenta</a></li>
+      </ul>
+    </nav>
+    </div>
+    <div id="separ" >
+      Inventario de Surfcasting
+    </div>
+  <table id="tablaInventario">
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Año</th>
+        <th>Precio</th>
+        <th>categoria</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se insertarán las filas de la tabla dinámicamente con JavaScript -->
+    </tbody>
+  </table>
+
+
+  <!--Modal nuevo articulo-->
+  <div id="myModal" class="modal">
+    <!-- Contenido del modal -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>articulo a adjuntar...</p>
+      <select id="selectArticulos"></select>
+      <button id ="css_button" class="cssbuttons-io-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+        <span>Add</span>
+      </button>
+    </div>
+  </div>
+  <div id="Bdiv">
+    <div id="Db">
+      <button class="delete">
+        <span class="text">Delete</span>
+        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
+    </div lefb>
+    <div class="Lb">
+      <button id="addbutton"  class="add">
+          <span class="text">add</span>
+          <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <text x="50%" y="65%" text-anchor="middle" alignment-baseline="middle" font-size="44" font-weight="bold" fill="white">+</text>
+              </svg>
+          </span>
+      </button>
+    </div>
+   
+    <script>
+
+async function openModalAddArticulo(modal){
+  try {
+      
+      modal.style.display = 'block';
+      const response = await fetch('http://localhost:3000/inventario/getbycat', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'authorization': localStorage.getItem('token')
+          },
+          body: JSON.stringify({
+              id_category: 2
+          })
+      });
+
+      if (!response.ok) {
+          throw new Error('Error al obtener los artículos');
+      }
+
+      const data = await response.json();
+
+      // Limpiar opciones previas del select
+      selectArticulos.innerHTML = '<option value="" selected disabled>Selecciona un artículo</option>';
+
+      // Recorrer los datos y agregar opciones al menú desplegable
+      data.forEach(articulo => {
+          const option = document.createElement('option');
+          option.value = articulo.id; // Asigna el ID del artículo como valor
+          option.textContent = articulo.brand+" "+articulo.model; // Asigna el nombre del artículo como texto visible
+
+          selectArticulos.appendChild(option);
+      });
+  } catch (error) {
+      console.error('Error al obtener los artículos:', error);
+  }
+}
+
+function closeModalAddArticulo(modal){
+  modal.style.display = 'none';
+}
+
+function reloadarticles(){
+
+}
+
+function addcount(){
+  fetch('http://localhost:3000/inventario/getCount',
+  {method: 'GET',
+  headers:{
+    'Content-Type': 'application/json',
+    'authorization':localStorage.getItem('token')
+  }}).then(response => response.json())
+  .then(data => {
+  })
+}
+//funcion para crear la tabla en categoria surfcasting
+
+async function createTable() {
+    await fetch('http://localhost:3000/inventario/GetByCatUser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': localStorage.getItem('token')
+        },
+        body: JSON.stringify({
+            id_category: 2
+        })
+    })
+    
+    .then(response => response.json())
+    .then(data => {
+        let totalGastado = 0; 
+      
+        // Obtener la referencia al cuerpo de la tabla
+        const tbody = document.querySelector('#tablaInventario tbody');
+      
+        // Limpiar el contenido anterior de la tabla
+        tbody.innerHTML = '';
+      
+        // Función para crear filas de la tabla con los datos del inventario
+        function crearFila(inventarioItem) {
+            totalGastado += parseFloat(inventarioItem.price * inventarioItem.cantidad); // Sumamos el precio de cada elemento al total
+            return `
+                <tr>
+                    <td>${inventarioItem.cantidad}</td>
+                    <td>${inventarioItem.brand}</td>
+                    <td>${inventarioItem.model}</td>
+                    <td>${inventarioItem.year}</td>
+                    <td>${formatPrice(inventarioItem.price)}</td>
+                    <td>${inventarioItem.category.name}</td>
+                    <td>${inventarioItem.type}</td>
+                </tr>
+            `;
+        }
+      
+        // Iterar sobre los datos del inventario y crear filas de la tabla
+        data.forEach(inventarioItem => {
+            const fila = crearFila(inventarioItem);
+            tbody.innerHTML += fila;
+        });
+      
+        // Mostrar el total gastado debajo de la última fila
+        const totalGastadoElement = document.createElement('tr');
+        totalGastadoElement.innerHTML = `<td colspan="7">Total gastado: ${formatPrice(totalGastado)} euros</td>`;
+        tbody.appendChild(totalGastadoElement);
+    })
+    .catch(error => {
+        console.error(error);
+        alert('Error al obtener datos del inventario. Por favor, inténtelo de nuevo más tarde.');
+    });
+}
+
+async function add_registro(select){
+  await fetch('http://localhost:3000/inventario/add_user_article', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'authorization':localStorage.getItem('token')
+          },
+          body: JSON.stringify({
+            id_article: select.value
+          })
+}).then(response => {
+  if (response.ok) {
+    // El artículo se agregó correctamente, puedes realizar cualquier acción adicional necesaria
+    console.log('Artículo agregado correctamente al usuario');
+  } else {
+    // Ocurrió un error al agregar el artículo
+    console.error('Error al agregar el artículo al usuario');
+  }
+})
+.catch(error => {
+  console.error('Error de red al agregar el artículo al usuario:', error);
+});
+}
+
+//funcion para cargar los articulos
+async function loadArticles(){
+  const selectArticulos = document.getElementById('selectArticulos');
+   // Agregar un evento de cambio al menú desplegable
+   
+}
+
+// Función para formatear el precio
+function formatPrice(price) {
+  const formattedPrice = parseFloat(price).toFixed(2);
+  return formattedPrice.endsWith('.00') ? formattedPrice.slice(0, -3) : formattedPrice;
+}
+
+
+//DOMContentLoaded se ejecuta justo despues de haber cargado todos los elementos HTML
+document.addEventListener('DOMContentLoaded', async function() {
+  await addcount()
+  await createTable();
+    
+    //Referencia al DOM modal
+    const modal = document.getElementById('myModal');
+
+    const select = document.getElementById('selectArticulos')
+
+    //Botón añadir
+    const boton = document.getElementById('addbutton');
+    boton.addEventListener('click',openModalAddArticulo.bind(null,modal));
+
+    const boton_add = document.getElementById('css_button')
+    boton_add.addEventListener('click', async function() {
+    await add_registro(select);
+    await closeModalAddArticulo(modal);
+    await createTable()
+});
+
+    //Boton cerrar modal
+    const closeModalBtn = modal.querySelector('.close');
+    closeModalBtn.addEventListener('click',closeModalAddArticulo.bind(null,modal));
+
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+  }
+});
+});
+</script>
+</body>
+</html>
