@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="profile.css">
+    <title>Booe</title>
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul>
+          <li><a href="inicio.html">Inicio</a></li>
+          <li class="dropdown">
+            <a href="#">Categorías</a>
+            <div class="dropdown-content">
+              <a href="categoria_surfcasting.html">Surfcasting</a>
+              <a href="categoria_ spinning.html"> Spinning</a>
+              <a href="category3.html">Rockfishing</a>
+            </div>
+          </li>
+          <li><a href="#">Otra Opción</a></li>
+          <li><a href="#">Cuenta</a></li>
+        </ul>
+      </nav>
+
+    <section class="user_sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="user_info_sec">
+                        <div class="user_name_sec d-flex justify-content-between align-items-center">
+                            <div class="user_pic d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="../API_PESCA/assets/img_profile/" alt="Foto de perfil">
+                                </div>
+                                <div class="name">
+                                    <p id="nameVAR"></p>
+                                </div>
+                            </div>
+                            <div class="notification">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                        </div>
+                        <div class="user_ext_info">
+                            <p id="emailVAR"></p>
+                            <p>Dinero gastado total: <span id="canttotal"></span> €</p>
+                        </div>
+                        <div class="btn_group d-flex">
+                            <a href="#" class="recharge_btn">Recharge</a>
+                            <a href="#" class="change_name_btn">Change Nick Name</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="menu_sec">
+                    <div class="col-md-12">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <i class="far fa-list-alt"></i> Orders
+                                            <span class="fas fa-chevron-down"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim e
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            <i class="fas fa-gift"></i> Promotion <span class="fas fa-chevron-down"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            <i class="fas fa-wallet"></i> Wallet <span class="fas fa-chevron-down"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                                            <i class="far fa-credit-card"></i> Bank Card <span class="fas fa-chevron-down"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingThree">
+                                    <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
+                                            <i class="fas fa-building"></i> Address <span class="fas fa-chevron-down"></span>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapsefive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="butdiv">
+                            <button class="Btn" id="logout_bt">
+  
+                                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                                
+                                <div class="text">Logout</div>
+                              </button>
+                            </div>
+
+                        </div><!-- panel-group -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/e5c874c64c.js" crossorigin="anonymous"></script> -->
+
+<script>
+    var log_bt = document.getElementById("logout_bt");
+    log_bt.addEventListener("click",function(){
+        localStorage.removeItem('token');
+        //window.location.href = "login.html";
+
+    });
+    var varName = document.getElementById("nameVAR");
+    var varEmail = document.getElementById("emailVAR");
+    var varTotalPrice = document.getElementById("canttotal");
+    var imgElement = document.getElementById('profileImage');
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        console.log("me llaman")
+        await putName();
+    })
+        async function putName() {
+            try {
+                const response = await fetch('http://localhost:3000/inventario/getname', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': localStorage.getItem('token')
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+
+                    // Actualiza el contenido del elemento HTML con el nombre y otros datos obtenidos
+                    varName.textContent = data.name;
+                    varEmail.textContent = data.email;
+                    varTotalPrice.textContent = data.total;
+
+                    // Actualiza la ruta de la imagen de perfil del usuario
+                    imgElement.src = data.photo; // Suponiendo que data.photo contiene la ruta de la imagen
+                } else {
+                    console.error('Error al obtener los datos del servidor:', response.status);
+                }
+
+            } catch (error) {
+                console.error('Error al procesar la solicitud:', error);
+            }
+        }
+
+</script>
+</html>
+
+

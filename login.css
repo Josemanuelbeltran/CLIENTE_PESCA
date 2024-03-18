@@ -11,6 +11,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 120vh;
+    min-height: 100vh; /* Cambiado a min-height */
+    margin-top: -300px; /* Ajuste de la posición hacia arriba */
 }
 
 .login-form {
@@ -52,3 +54,6 @@ button:hover {
     background-color: #0056b3;
 }
 
+.register_bt{
+margin-top: 15px;
+}

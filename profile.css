@@ -1,0 +1,317 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Estilos del perfil de usuario */
+.profile {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.profile-email {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.profile-settings {
+    margin-left: auto;
+}
+
+.settings-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.settings-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-footer {
+    text-align: center;
+    padding: 20px;
+}
+
+.logout {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.logout:hover {
+    text-decoration: underline;
+}
+
+.navbar{
+    z-index: 1000;
+    
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+  }
+  
+  nav ul li {
+    display: inline-block;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+  }
+  
+  .dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+  }
+  
+  .dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .panel-title a {
+    color: #6f6f6f;
+    padding: 20px !important;
+}
+
+.panel-title a span {
+    float: right
+}
+
+.panel-title a i {
+    margin-right: 15px;
+}
+
+.menu_sec {
+    width: 100%;
+    margin-top: 15px;
+    border-top: 2px solid #cccc;
+}
+
+p {
+    margin: 0px;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.user_info_sec {
+    background-color: #009788;
+    padding: 15px;
+    margin-top: 15px;
+    color: #fff
+}
+
+.recharge_btn {
+    padding: 6px 15px;
+    color: #fff;
+    background-color: #2196f3;
+    font-size: 14px;
+    box-shadow: 0px 2px 4px #0d61a2;
+    margin-right: 15px;
+}
+
+.change_name_btn {
+    padding: 6px 15px;
+    color: #000;
+    background-color: #fff;
+    font-size: 14px;
+    box-shadow: 0px 2px 4px #0d61a2;
+    margin-right: 15px;
+}
+
+.btn_group {
+    margin-top: 15px;
+}
+
+.notification i {
+    padding: 10px 11px;
+    background-color: #fff;
+    color: #8e8e8e;
+    border-radius: 50px;
+}
+
+.user_ext_info p {
+    margin-bottom: 7px;
+}
+
+
+
+.panel-group .panel {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #EEEEEE;
+}
+
+.panel-default>.panel-heading {
+    padding: 0;
+    border-radius: 0;
+    color: #212121;
+    background-color: #FAFAFA;
+    border-color: #EEEEEE;
+}
+
+.panel-title {
+    font-size: 14px;
+}
+
+.panel-title>a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.more-less {
+    float: right;
+    color: #212121;
+}
+
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #EEEEEE;
+}
+
+.Btn {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: rgb(255, 65, 65);
+  }
+  
+  /* plus sign */
+  .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sign svg {
+    width: 17px;
+  }
+  
+  .sign svg path {
+    fill: white;
+  }
+  /* text */
+  .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+  }
+  /* hover effect on button width */
+  .Btn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+  }
+  
+  .Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+  }
+  /* hover effect button's text */
+  .Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+  }
+  /* button click effect*/
+  .Btn:active {
+    transform: translate(2px ,2px);
+  }
+
+  .butdiv {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 50vh; /* Ajusta la altura para ocupar toda la altura visible de la ventana */
+}

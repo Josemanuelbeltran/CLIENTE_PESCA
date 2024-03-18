@@ -11,6 +11,7 @@
 <div class="container">
 
     <form id="loginForm" class="login-form">
+      <h2>Inicio de sesión</h2>
         <div class="form-group">
             <label for="username">Usuario:</label>
             <input type="text" id="username" name="username" required>
@@ -20,6 +21,10 @@
             <input type="password" id="password" name="password" required>
         </div>
         <button type="button" onclick="login()">Iniciar Sesión</button>
+        <div class="register_bt">
+          <a>¿eres nuevo? </a>
+          <a href="register.html">registrate aqui</a>
+        </div>
     </form>
 </div>
 
@@ -29,6 +34,7 @@
 
 
 <script>
+
 function verificarAutenticacion() {
   var token = localStorage.getItem('token'); // Obtener el token del localStorage
   if (token) {
@@ -39,6 +45,7 @@ function verificarAutenticacion() {
     window.location.href = 'login.html';
   }
 }
+
 function login() {
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
@@ -73,8 +80,6 @@ function login() {
     alert('Error al intentar iniciar sesión. Por favor, inténtelo de nuevo más tarde.');
   });
 }
-
-
 
 </script>
 

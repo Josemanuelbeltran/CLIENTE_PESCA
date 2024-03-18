@@ -22,7 +22,7 @@
           </div>
         </li>
         <li><a href="#">Otra Opción</a></li>
-        <li><a href="#">Cuenta</a></li>
+        <li><a href="profile.html">Cuenta</a></li>
       </ul>
     </nav>
   </div>
@@ -80,7 +80,6 @@
     </div>
 
     <script>
-
       async function openModalAddArticulo(modal) {
         try {
 
@@ -269,9 +268,22 @@
         return formattedPrice.endsWith('.00') ? formattedPrice.slice(0, -3) : formattedPrice;
       }
 
+      async function checktoken(){
+        const respuesta = await fetch('http://localhost:3000/inventario/redirect', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'authorization': localStorage.getItem('token')
+      }})
+       if(respuesta.status == 401){
+         window.location.href = 'login.html';
+       }
+      }
+
       //DOMContentLoaded se ejecuta justo despues de haber cargado todos los elementos HTML
       document.addEventListener('DOMContentLoaded', async function () {
-        getcount()
+        await checktoken()
+        getcount();
         createTable();
 
         //Referencia al DOM modal
@@ -307,22 +319,22 @@
       //funcion delete para eliminar registros
 
       async function deleteRG(id_article) {
-    try {
-        await fetch('http://localhost:3000/inventario/delete', {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                'authorization': localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                id_article: id_article
-            })
-        });
-        await createTable()
-    } catch (error) {
-        console.error('Error al eliminar fila:', error);
-        alert('Error al eliminar fila. Por favor, inténtelo de nuevo más tarde.');
-    }
+        try {
+            await fetch('http://localhost:3000/inventario/delete', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': localStorage.getItem('token')
+                },
+                body: JSON.stringify({
+                    id_article: id_article
+                })
+            });
+            await createTable()
+        } catch (error) {
+            console.error('Error al eliminar fila:', error);
+            alert('Error al eliminar fila. Por favor, inténtelo de nuevo más tarde.');
+        }
 }
 
     </script>

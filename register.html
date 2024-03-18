@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Aquí puedes enlazar tus archivos CSS -->
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form">
+            <p class="title">Registrate </p>
+            <p class="message">Registrate en nuestra web para tener acceso a nuestros servicios </p>
+                <label>
+                    <input class="input" type="text" placeholder="" required="" id="username">
+                    <span>Nombre</span>
+                </label>
+            <label>
+                <input class="input" type="email" placeholder="" required="" id="useremail">
+                <span>Email</span>
+            </label> 
+                
+            <label>
+                <input class="input" type="password" placeholder="" required="" id="password1">
+                <span>Contraseña</span>
+            </label>
+            <label>
+                <input class="input" type="password" placeholder="" required="" id="password2">
+                <span>Confirme Contraseña</span>
+            </label>
+            <button class="submit" onclick="register()">Crear cuenta</button>
+            <p class="signin">¿Ya tienes cuenta? <a href="login.html">Iniciar Sesion</a> </p>
+        </form>
+</div>
+
+<script>
+    async function register(){
+        var username = document.getElementById('username').value;
+        var useremail = document.getElementById('useremail').value
+        var password1 = document.getElementById('password1').value;
+        var password2 = document.getElementById('password2').value;
+        if (password1 === password2) {
+            var userData = {
+                name:username,
+                email:useremail,
+                password:password1
+            }
+        }else {
+            pop("las contraseñas no coinciden")
+        }
+        try {
+            await fetch('http://localhost:3000/inventario/register', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        //alert("creado correctamente")
+        } catch (error) {
+            alert(error)
+        }
+        
+    }
+</script>
+</body>
+
+</html>
