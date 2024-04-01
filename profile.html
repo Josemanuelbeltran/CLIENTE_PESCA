@@ -37,7 +37,7 @@
                         <div class="user_name_sec d-flex justify-content-between align-items-center">
                             <div class="user_pic d-flex align-items-center">
                                 <div class="icon">
-                                    <img src="../API_PESCA/assets/img_profile/" alt="Foto de perfil">
+                                    <img src="" id="profile_photo" alt="Foto de perfil">
                                 </div>
                                 <div class="name">
                                     <p id="nameVAR"></p>
@@ -170,7 +170,7 @@
     var varName = document.getElementById("nameVAR");
     var varEmail = document.getElementById("emailVAR");
     var varTotalPrice = document.getElementById("canttotal");
-    var imgElement = document.getElementById('profileImage');
+    var imgElement = document.getElementById('profile_photo');
 
     document.addEventListener('DOMContentLoaded', async function () {
         console.log("me llaman")
@@ -195,7 +195,8 @@
                     varTotalPrice.textContent = data.total;
 
                     // Actualiza la ruta de la imagen de perfil del usuario
-                    imgElement.src = data.photo; // Suponiendo que data.photo contiene la ruta de la imagen
+                    imgElement.src = data.photo// Suponiendo que data.photo contiene la ruta de la imagen
+                    
                 } else {
                     console.error('Error al obtener los datos del servidor:', response.status);
                 }
