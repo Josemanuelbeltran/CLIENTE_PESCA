@@ -340,3 +340,109 @@ nav ul {
   transition-duration: 0.5s;
   transform: rotate(160deg);
 }
+
+/* Botón personalizado con estilo simple */
+.custom-button {
+  background-color: #4CAF50; /* Color verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px; /* Añade un margen superior para separar los botones */
+}
+
+.custom-button:hover {
+  background-color: #45a049; /* Color ligeramente más oscuro al hacer hover */
+}
+
+/* Separación entre los botones */
+#addNewArticleButton {
+  margin-bottom: 10px; /* Añadir un margen inferior para dar separación */
+}
+/* Botón personalizado con estilo simple */
+.custom-button {
+  background-color: #4CAF50; /* Color verde */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px; /* Añade un margen superior para separar los botones */
+}
+
+.custom-button:hover {
+  background-color: #45a049; /* Color ligeramente más oscuro al hacer hover */
+}
+
+/* Asegura que el formulario se alinea justo debajo del modal principal */
+#newArticleContainer {
+  background-color: #f9f9f9;
+  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 10px; /* Pequeño margen para separar del modal */
+  width:100% /* Acomoda todo al ancho del modal */
+  
+}
+
+/* Ajusta los campos del formulario para que ocupen mejor el espacio */
+.styled-form input, .styled-form select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%; 
+  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+  transition: border-color 0.3s;
+}
+
+.styled-form {
+  display: flex; /* Activa Flexbox */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+}
+
+.form-group {
+  flex: 1; /* Permite que todos los campos ocupen el mismo espacio */
+  margin-right: 10px; /* Espacio entre campos */
+}
+
+.form-group:last-child {
+  margin-right: 0; /* Elimina margen derecho en el último elemento */
+}
+
+
+/* Botón de envío con estilo coherente */
+.submit-button {
+  width: 100%;
+  padding: 12px 0;
+  background-color: #007BFF;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para los botones principales */
+.custom-button {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.custom-button:hover {
+  background-color: #45a049;
+}
+

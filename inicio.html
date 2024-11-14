@@ -1,37 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Barra de Navegación</title>
-<link rel="stylesheet" type="text/css" href="inicio.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos de Pesca</title>
+    <link rel="stylesheet" type="text/css" href="inicio.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 <body>
-  <div >
-    <nav class="navbar">
-      <ul>
-        <li><a href="inicio.html">Inicio</a></li>
-        <li class="dropdown">
-          <a href="#">Categorías</a>
-          <div class="dropdown-content">
-            <a href="categoria_surfcasting.html">Surfcasting</a>
-            <a href="categoria_ spinning.html"> Spinning</a>
-            <a href="category3.html">Rockfishing</a>
-          </div>
-        </li>
-        <li><a href="#">Otra Opción</a></li>
-        <li><a href="profile.html">Cuenta</a></li>
-      </ul>
-    </nav>
+    <div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="inicio.html">Inicio</a></li>
+                <li class="dropdown">
+                    <a href="#">Categorías</a>
+                    <div class="dropdown-content">
+                        <a href="categoria_surfcasting.html">Surfcasting</a>
+                        <a href="categoria_spinning.html">Spinning</a>
+                        <a href="category3.html">Rockfishing</a>
+                    </div>
+                </li>
+                <li><a href="#">Otra Opción</a></li>
+                <li><a href="profile.html">Cuenta</a></li>
+            </ul>
+        </nav>
     </div>
-    <div class="prueba">
     
+    <h1>Información de Eventos de Pesca</h1>
+
+    <div class="event-container">
+        <div class="arrow left-arrow" id="prevEvent">&lt;</div>
+        <div id="event-info" class="event"></div>
+        <div class="arrow right-arrow" id="nextEvent">&gt;</div>
     </div>
 
+    <div class="map-container" id="map"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+        let events = [];
+        let currentEventIndex = 0;
+        let map;
+
+        async function fetchFishingEvents() {
+            try {
+                const response = await axios.get('http://localhost:3000/api/fishing-events');
+                events = response.data.entries;
+                initializeMap(); // Inicializa el mapa aquí
+                displayFishingEvent(currentEventIndex);
+            } catch (error) {
+                console.error("Error al cargar los eventos de pesca:", error);
+            }
+        }
+
+        function initializeMap() {
+            if (events.length > 0) {
+                const firstEvent = events[0];
+                map = L.map('map').setView([firstEvent.position.lat, firstEvent.position.lon], 8);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(map);
+                L.marker([firstEvent.position.lat, firstEvent.position.lon]).addTo(map)
+                    .bindPopup('Posición del primer evento de pesca')
+                    .openPopup();
+            }
+        }
+
+        function displayFishingEvent(index) {
+            const eventInfoDiv = document.getElementById('event-info');
+            const event = events[index];
+
+            eventInfoDiv.innerHTML = `
+                <h2>Datos del Evento: ${event.id}</h2>
+                <table>
+                    <tr><th>ID del Evento</th><td>${event.id}</td></tr>
+                    <tr><th>Tipo</th><td>${event.type}</td></tr>
+                    <tr><th>Fecha de Inicio</th><td>${new Date(event.start).toLocaleString()}</td></tr>
+                    <tr><th>Fecha de Fin</th><td>${new Date(event.end).toLocaleString()}</td></tr>
+                    <tr><th>Posición (Lat, Lon)</th><td>${event.position.lat}, ${event.position.lon}</td></tr>
+                    <tr><th>Distancia desde la costa (Km)</th><td>Inicio: ${event.distances.startDistanceFromShoreKm}, Fin: ${event.distances.endDistanceFromShoreKm}</td></tr>
+                    <tr><th>Distancia desde el puerto (Km)</th><td>Inicio: ${event.distances.startDistanceFromPortKm.toFixed(2)}, Fin: ${event.distances.endDistanceFromPortKm.toFixed(2)}</td></tr>
+                    <tr><th>Barco</th><td>${event.vessel.name} (${event.vessel.flag})</td></tr>
+                </table>
+            `;
+
+            updateMap(event.position.lat, event.position.lon);
+        }
+
+        function updateMap(lat, lon) {
+            if (map) {
+                map.setView([lat, lon], 8);
+                map.eachLayer(layer => {
+                    if (layer instanceof L.Marker) {
+                        map.removeLayer(layer);
+                    }
+                });
+                L.marker([lat, lon]).addTo(map)
+                    .bindPopup('Posición del evento de pesca')
+                    .openPopup();
+            }
+        }
+
+        function setupNavigation() {
+            document.getElementById('prevEvent').addEventListener('click', function() {
+                if (currentEventIndex > 0) {
+                    currentEventIndex--;
+                    displayFishingEvent(currentEventIndex);
+                }
+            });
+
+            document.getElementById('nextEvent').addEventListener('click', function() {
+                if (currentEventIndex < events.length - 1) {
+                    currentEventIndex++;
+                    displayFishingEvent(currentEventIndex);
+                }
+            });
+        }
+
+        fetchFishingEvents().then(setupNavigation);
+    </script>
 </body>
 </html>
-
-<a role="button" class="cbp-empty-mlink nav-link">
-									
-
-  <span class="cbp-tab-title"> <i class="icon fa fa-bars cbp-mainlink-icon"></i><i class="fa fa-angle-down cbp-submenu-aindicator"></i></span></a>

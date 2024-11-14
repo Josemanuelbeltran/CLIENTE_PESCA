@@ -1,317 +1,181 @@
-/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+  margin: 0; 
+  height: calc(100vh - 6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f0f0f0;
 }
 
-/* Estilos del perfil de usuario */
-.profile {
-    max-width: 400px;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.profile-header {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
-}
-
-.profile-picture {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 20px;
-}
-
-.profile-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.profile-info {
-    flex: 1;
-}
-
-.profile-name {
-    margin: 0;
-    font-size: 20px;
-    color: #333;
-}
-
-.profile-email {
-    margin: 5px 0 0;
-    font-size: 14px;
-    color: #666;
-}
-
-.profile-settings {
-    margin-left: auto;
-}
-
-.settings-icon {
-    display: block;
-    width: 24px;
-    height: 24px;
-}
-
-.settings-icon img {
-    width: 100%;
-    height: auto;
-}
-
-.profile-footer {
-    text-align: center;
-    padding: 20px;
-}
-
-.logout {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.logout:hover {
-    text-decoration: underline;
-}
-
-.navbar{
-    z-index: 1000;
-    
+/* Navbar Styles */
+.navbar {
+  width: 100%;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
-  }
-  
-  nav ul li {
-    display: inline-block;
-  }
-  
-  nav ul li a {
-    display: block;
-    padding: 10px 20px;
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #333;
-  }
-  
-  .dropdown-content a {
-    color: #fff;
-    padding: 12px 16px;
-    display: block;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #333;
-  }
-  
-  .dropdown-content a {
-    color: #fff;
-    padding: 12px 16px;
-    display: block;
-  }
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .panel-title a {
-    color: #6f6f6f;
-    padding: 20px !important;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.panel-title a span {
-    float: right
+nav ul li {
+  display: inline-block;
+  position: relative;
 }
 
-.panel-title a i {
-    margin-right: 15px;
+nav ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
 }
 
-.menu_sec {
-    width: 100%;
-    margin-top: 15px;
-    border-top: 2px solid #cccc;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  z-index: 1;
 }
 
-p {
-    margin: 0px;
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  display: block;
+  text-decoration: none;
 }
 
-.icon {
-  width: 50px;
-  height: 50px;
-  font-size: 40px;
-  margin-right: 10px;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
-.user_info_sec {
-    background-color: #009788;
-    padding: 15px;
-    margin-top: 15px;
-    color: #fff
+.container {
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  background-color: #fff;
+  border: 2px solid #333;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
-.recharge_btn {
-    padding: 6px 15px;
-    color: #fff;
-    background-color: #2196f3;
-    font-size: 14px;
-    box-shadow: 0px 2px 4px #0d61a2;
-    margin-right: 15px;
+header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.change_name_btn {
-    padding: 6px 15px;
-    color: #000;
-    background-color: #fff;
-    font-size: 14px;
-    box-shadow: 0px 2px 4px #0d61a2;
-    margin-right: 15px;
+.content {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  align-items: flex-start; /* Alinea el contenido al inicio para que ocupe toda la altura */
 }
 
-.btn_group {
-    margin-top: 15px;
+.left-column {
+  flex: 1;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-start; /* Alinea los elementos al inicio */
 }
 
-.notification i {
-    padding: 10px 11px;
-    background-color: #fff;
-    color: #8e8e8e;
-    border-radius: 50px;
+.photo-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border: 2px solid #333;
 }
 
-.user_ext_info p {
-    margin-bottom: 7px;
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
-
-.panel-group .panel {
-    border-radius: 0;
-    box-shadow: none;
-    border-color: #EEEEEE;
+.edit-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #333;
 }
 
-.panel-default>.panel-heading {
-    padding: 0;
-    border-radius: 0;
-    color: #212121;
-    background-color: #FAFAFA;
-    border-color: #EEEEEE;
+.export-button {
+  padding: 10px;
+  width: 150px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #333;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
 }
 
-.panel-title {
-    font-size: 14px;
+.export-button:hover {
+  background-color: #ddd;
 }
 
-.panel-title>a {
-    display: block;
-    padding: 15px;
-    text-decoration: none;
+.right-column {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.more-less {
-    float: right;
-    color: #212121;
+.info-container,
+.preferences-container {
+  padding: 15px;
+  border: 2px solid #333;
+  flex: 1;
 }
 
-.panel-default>.panel-heading+.panel-collapse>.panel-body {
-    border-top-color: #EEEEEE;
+.logout-button {
+  text-align: center;
+  margin-top: auto; /* Empuja el botón de cierre hacia la parte inferior */
 }
 
-.Btn {
-    margin-top: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 45px;
-    height: 45px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition-duration: .3s;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
-    background-color: rgb(255, 65, 65);
-  }
-  
-  /* plus sign */
-  .sign {
-    width: 100%;
-    transition-duration: .3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sign svg {
-    width: 17px;
-  }
-  
-  .sign svg path {
-    fill: white;
-  }
-  /* text */
-  .text {
-    position: absolute;
-    right: 0%;
-    width: 0%;
-    opacity: 0;
-    color: white;
-    font-size: 1.2em;
-    font-weight: 600;
-    transition-duration: .3s;
-  }
-  /* hover effect on button width */
-  .Btn:hover {
-    width: 125px;
-    border-radius: 40px;
-    transition-duration: .3s;
-  }
-  
-  .Btn:hover .sign {
-    width: 30%;
-    transition-duration: .3s;
-    padding-left: 20px;
-  }
-  /* hover effect button's text */
-  .Btn:hover .text {
-    opacity: 1;
-    width: 70%;
-    transition-duration: .3s;
-    padding-right: 10px;
-  }
-  /* button click effect*/
-  .Btn:active {
-    transform: translate(2px ,2px);
+.logout-button button {
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #333;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button button:hover {
+  background-color: #ddd;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .content {
+      flex-direction: column;
+      align-items: center;
   }
 
-  .butdiv {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 50vh; /* Ajusta la altura para ocupar toda la altura visible de la ventana */
+  .left-column,
+  .right-column {
+      width: 100%;
+  }
+
+  .export-button {
+      width: 100%;
+  }
 }
